@@ -1,165 +1,325 @@
+/* No Support for Foldable Mobiles in Single Screen Mode */
+
 * {
 	font-family: 'Roboto', sans-serif;
-	color: #000;
 }
 
+html,
 body {
 	background-color: #fff;
-	margin: 1vh 2vw;
+	margin: 0;
+	padding: 0;
 	height: 100vh;
+	box-sizing: border-box;
 }
 
 #wrapper {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	-ms-flex-direction: column;
+	/* padding: 1vh 1vw; */
 }
 
 #top-bar {
 	display: flex;
 	flex-direction: row;
+	-ms-flex-direction: row;
 	justify-content: flex-end;
 	align-items: center;
-}
-
-.top-bar-link {
-	text-decoration: none;
-	color: hsl(0deg, 0%, 30%);
-	margin-right: 2vw;
+	flex: 1 1;
+	margin-top: 1vh;
+	margin-left: 1vw;
+	margin-right: 1vw;
 	font-size: 0.9em;
-	font-weight: 200;
-	flex-shrink: 1;
+	min-width: 0;
 }
 
-.top-bar-link:hover {
+#top-bar .link {
+	color: rgb(31, 31, 31);
+	text-decoration: none;
+	margin-right: 10px;
+	min-width: 0;
+}
+
+#top-bar .link:nth-child(2) {
+	margin-right: 25px;
+}
+
+#top-bar .link:hover {
 	text-decoration: underline;
 }
 
-#profile-image {
-	border-radius: 50%;
-	max-width: 100%;
-	height: auto;
-	flex-shrink: 1;
-}
-
-#mid-container {
+#top-bar .profile-image-container {
+	margin: 0;
+	padding: 0;
+	width: 40px;
+	height: 40px;
 	display: flex;
 	flex-direction: column;
-	flex: 100%;
-	margin-top: 25vh;
+	-ms-flex-direction: column;
+	align-items: center;
+	margin-right: 10px;
+	min-width: 0;
 }
 
-#google-logo {
-	font-size: 5em;
-	flex-shrink: 1;
-	align-self: center;
+#top-bar .google-apps-container {
+	margin: 0;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	flex-direction: column;
+	-ms-flex-direction: column;
+	align-items: center;
+	margin-right: 20px;
+	min-width: 0;
 }
 
-.blue {
-	color: rgb(18, 128, 192);
+
+#top-bar .profile-image-container .profile-image {
+	width: 40px;
+	max-width: 100%;
+	height: auto;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	cursor: pointer;
 }
 
-.red {
-	color: rgb(221, 67, 67);
+#top-bar .google-apps-container .apps-icon {
+	width: 24px;
+	max-width: 100%;
+	height: auto;
+	cursor: pointer;
 }
 
-.green {
-	color: rgb(32, 184, 12);
+.tool-tip {
+	visibility: hidden;
+	background-color: rgba(26, 26, 26, 0.842);
+	color: #fff;
+	padding: 5px;
+	max-width: 100px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	text-align: left;
+	min-width: 0;
 }
 
-.yellow {
-	color: rgb(240, 225, 96);
+.tool-tip .title {
+	font-weight: bold;
+	font-size: 0.9em;
+	text-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.4);
+	padding-bottom: 5px;
+}
+
+.tool-tip .content {
+	font-size: 0.9em;
+	color: rgb(177, 177, 177);
+	text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+#top-bar .profile-image-container .tool-tip {
+	position: relative;
+	top: 5px
+}
+
+#top-bar .google-apps-container .tool-tip {
+	position: relative;
+	top: 5px;
+}
+
+#top-bar .profile-image-container:hover .tool-tip,
+#top-bar .google-apps-container:hover .tool-tip,
+#top-bar .profile-image-container:focus .tool-tip,
+#top-bar .google-apps-container:focus .tool-tip  {
+	visibility: visible;
+}
+
+#google-logo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 150px;
+	min-width: 0;
+	flex: 0 1 auto;
+}
+
+#google-logo-container .google-logo {
+	width: 272px;
+	max-width: 100%;
+	height: auto;
+	min-width: 0;
+	flex: 0 1 272px;
 }
 
 #search-box-container {
 	display: flex;
-	align-self: center;
-	margin-top: 2vh;
-	width: 50%;
+	flex-direction: row;
+	-ms-flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	flex-direction: row;
-	padding: 3px;
-	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
-	border-radius: 40px;
+	margin: 15px 0 0 0;
+	min-width: 0;
+	flex: 0 1 24px;
 }
 
-#search-icon {
-	font-weight: 600;
-	font-size: 1.3em;
-	color: hsl(0deg, 0%, 20%);
-	opacity: 0.5;
-	padding-left: 3%;
+#search-box-container .centering-dummy:hover,
+#search-box-container .centering-dummy:focus {
+	box-shadow: 
+	0 0 2px 1px rgba(0, 0, 0, 0.3),
+	0 0 3px 1px rgba(0, 0, 0, 0.2),
+	0 0 4px 1px rgba(0, 0, 0, 0.1);
 }
 
-#search-box {
-	border: 1px solid rgba(0, 0, 0, 0);
-	border-radius: 20px;
-	width: 100%;
-	font-size: 1.3em;
-	padding: 5px 5px 5px 15px;
+#search-box-container .centering-dummy .search-icon {
+	width: 24px;
+	max-width: 100%;
+	height: auto;
+	min-width: 0;
+	flex: 0 1 24px;
 }
 
-#search-box:focus {
+#search-box-container .centering-dummy .search-box {
+	border: 1px solid transparent;
+	border-radius: 0;
+	padding: 10px 5px;
+	font-size: 1.05em;
+	width: 80%;
+	min-width: 0;
+	flex: 0 1 80%;
+}
+
+#search-box-container .centering-dummy {
+	width: auto;
+	max-width: 584px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 0px 5px;
+	border: 1px solid transparent;
+	border-radius: 75px;
+	box-shadow: 
+		0 0 2px rgba(0, 0, 0, 0.3),
+		0 0 3px rgba(0, 0, 0, 0.2),
+		0 0 4px rgba(0, 0, 0, 0.1);
+	min-width: 0;
+	flex: 0 1 auto;
+}
+
+#search-box-container .centering-dummy .search-box:focus {
 	outline: none;
 }
 
-#search-buttons-container {
+#search-box-container .centering-dummy .mic-icon {
+	width: 24px;
+	max-width: 100%;
+	height: auto;
+	flex: 0 1 24px;
+	min-width: 0;
+}
+
+#buttons-container {
 	display: flex;
-	flex-direction: row;
+	flex: 0 1 100%;
 	justify-content: center;
 	align-items: center;
-	margin-top: 2vh;
+	margin-top: 15px;
 }
 
-.search-button {
-	background-color: transparent;
-	border: none;
-	font-weight: 200;
-	font-size: 1.1em;
-	color: hsl(0deg, 0%, 20%);
-	padding: 10px 20px;
-}
-
-.search-button:hover {
-	box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3), inset 0 0 1px 1px rgba(50, 50, 50, 0.3);
-}
-
-#bottom-bar {
-	display: flex;
-	flex-direction: row;
-	/* box-shadow: 0 -1px 3px 1px rgba(100, 100, 100, 0.6); */
-	border-top: 2px solid rgba(100, 100, 100, 0.4);
-	padding: 2vh 5vw;
-	justify-content: space-between;
-	align-items: center;
-}
-
-#left-bottom-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
-
-.bottom-bar-link {
-	text-decoration: none;
-	color: hsl(0deg, 0%, 30%);
-	margin-right: 2vw;
+#buttons-container .button {
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: 10px 15px;
 	font-size: 0.9em;
-	font-weight: 200;
-	flex-shrink: 1;
+	color: rgb(60, 60, 60);
+	box-shadow: 
+		0 0 2px rgba(0, 0, 0, 0.2),
+		0 0 3px rgba(0, 0, 0, 0.3);
 }
 
-#right-bottom-container {
+#buttons-container .button:hover {
+	box-shadow: 
+		0 0 2px 1px rgba(0, 0, 0, 0.2),
+		0 0 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+#buttons-container .button:first-child {
+	margin-right: 10px;
+}
+
+#footer {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: rgba(247, 247, 247, 0.863);
+	display: flex;
+	flex-direction: column;
+	-ms-flex-direction: column;
+	position: fixed;
+	bottom: 0;
+	font-size: 0.95em;
+	min-width: 0;
+	flex: 0 1 100%;
+}
+
+#footer #country {
+	padding: 15px 25px;
+	min-width: 0;
+	flex: 0 1 100%;
+}
+
+#footer #footer-links {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	-ms-flex-direction: row;
 	align-items: center;
+	justify-content: space-between;
+	border-top: 1px solid rgb(197, 197, 197);
+	min-width: 0;
+	padding: 15px 25px;
+	flex: 0 1 100%;
+	box-sizing: border-box;
 }
 
-@media only screen and (max-width: 500px) {
-	#google-logo {
-		font-size: 4em;
+#footer #footer-links .left-links {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#footer #footer-links .right-links {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#footer #country .link,
+#footer #footer-links .left-links .link,
+#footer #footer-links .right-links .link {
+	color: rgb(31, 31, 31);
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+#footer #country .link:hover,
+#footer #footer-links .left-links .link:hover,
+#footer #footer-links .right-links .link:hover {
+	text-decoration: underline;
+}
+
+/* I genuinely don't recall why I did this, but I'm too afraid to remove it now */
+
+/* Mobile Screens */
+@media screen and (max-width: 584px) {
+	#search-box-container .centering-dummy {
+		width: 100%;
+	}
+
+	#footer {
+		font-size: 50%;
+	}
+}
+
+/* Not Mobile Screens */
+@media screen and (min-width: 584px) {
+	#search-box-container .centering-dummy {
+		width: 100%;
 	}
 }
